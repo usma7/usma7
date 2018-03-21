@@ -1,0 +1,82 @@
+<html>
+	<head>
+	<script>
+function cualImagen( fila, col ){
+	var imagenes = [ 
+		id = "1.png",
+		id = "2.png",
+		id="3.png",
+		id="4.png",
+		id="5.png",
+		id="6.png",
+		id="7.png",
+		id="8.png",
+		id="9.png",
+		id="10.png"
+	];
+	var pos = (fila+1)*5 + col;
+	return "img/" + imagenes[ pos % 10 ];
+	
+	var seleccionado = false;
+	var carta = target.getElementById("imagenes");
+
+	function manejarEvento(ev){
+		console.log(seleccionado);
+		console.log(cartas);
+	}
+
+	if(seleccionado){
+		cartas = ev.target;
+		seleccionado = true;
+
+	}
+
+
+}
+
+function htmlCarta( fila, col ){
+
+	return '<div><img src="' + cualImagen(fila,col) + '" /></div>';
+}
+
+function repartir(){
+	var cartas="";
+	for( var fila = 0; fila <= 4; fila++){
+		for( col = 0; col <= 5; col++){
+
+			cartas += htmlCarta( fila, col); 
+		}
+	}
+	
+	tab = document.getElementById("tablero");
+	tab.innerHTML = cartas;
+}	
+	
+	</script>
+	<style>
+#tablero img
+{
+	visibility: visible;
+}	
+
+#tablero div 
+{
+	background-color: indigo;
+	padding: 4px;
+	border-width: 5px;
+	margin: 8px;
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+}
+	
+	</style>
+	</head>
+	<body>
+
+	<button onclick="repartir()">Repartir</button>
+	<div id="tablero"></div>
+	
+	<div id="puntaje"></div>
+	</body>
+</html>
